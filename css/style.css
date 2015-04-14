@@ -1,0 +1,35 @@
+/*!
+ * Version: 0.0.1
+ * Author: Alexandra Wang
+ * Author URL: http://shaojing.wang/
+ * Github: https://github.com/tara1128
+ * Latest modified date: 2015-04-14 18:18
+ */
+/* reset */
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, abbr, article, aside, command, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time{margin:0;padding:0;}
+a{text-decoration:none;}
+ul, ol, li{list-style:none outside;}
+img{border:none;}
+s{font-style:normal; text-decoration:none;}
+::-moz-selection {background:#d7ba78;color:#fff;} /* 设置全局文字被选中时的背景色和字体色 */
+::selection {background:#d7ba78;color:#fff;}
+/* global */
+html{background:#000;}
+body{font-size:12px;font-family:"Microsoft Yahei",arial,"Hiragino Sans GB",sans-serif;-webkit-font-smoothing:antialiased;}
+.wrap{position:relative;margin:0 auto;width:1000px;min-height:100%;}
+/* top */
+
+/* heading */
+.heading{margin:0;padding:80px 0 20px;border-bottom:1px solid #8e7e7f;}
+.h_box h1{font-size:20px;color:#d7ba78;}
+/* contents */
+.contents{padding:10px 0;}
+.c_item{margin:10px auto;padding:20px;border-bottom:1px dashed #8e7e7f;}
+.c_item h2{font-size:16px;color:#dbdad7;line-height:1.5em;}
+.c_item span.itemdate{display:block;font-size:12px;color:#999;}
+.itemdetail{padding:10px 0;}
+.itemdetail p{font-size:14px;color:#b8b8b8;line-height:1.5em;}
+
+/* footer */
+.footer{position:fixed;bottom:0px;padding:20px 0;width:1000px;background:#000;height:50px;border-top:1px solid #59523e;}
+.footer p{font-size:12px;text-align:center;color:#868070;}
