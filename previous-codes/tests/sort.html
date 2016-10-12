@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array Sort</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+  <div class="wrapper" id="Wrapper">
+    <h1>数组的几种排序方法</h1>
+  </div><!-- wrapper -->
+<script>
+
+// Get query strings from URL:
+function getQueryStringArgs() {
+  var qs = location.search.length > 0 ? location.search.substring(1) : "",
+      args = {},
+      itemsArray = qs.length > 0 ? qs.split("&") : [],
+      item = null,
+      name = null,
+      value = null;
+  for(var i = 0; i < itemsArray.length; i++){
+    item = itemsArray[i].split("=");
+    name = item[0];
+    value = item[1];
+    if(name.length){
+      args[name] = value;
+    }
+  }
+  return args;
+};
+
+
+// Bubble Sort:
+Array.prototype.BubbleSort = function() {
+  var len = this.length;
+  var tmp;
+  var count = 0;
+  for(var i = 0; i < len - 1; i++){
+    for(var j = 0; j < len-1-i; j++){
+      if( this[j] > this[j+1] ){
+        tmp = this[j];
+        this[j] = this[j+1];
+        this[j+1] = tmp;
+        // console.log("i =", i, ", j =", j, ". array = ", this );
+      }
+    }
+  }
+  return this;
+};
+
+// Merge Sort:
+Array.prototype.MergeSort = function() {
+  var me = this.BubbleSort(), he = arguments[0].BubbleSort(), finalArray = [];
+  while( me.length && he.length ) {
+    finalArray.push( me[0] <= he[0] ? me.shift() : he.shift() );
+  }
+  return finalArray.concat(me.concat(he));
+};
+
+// Selection Sort:
+Array.prototype.SelectionSort = function() {
+  var i, j, min, temp;
+  for(i = 0; i < this.length-1; i++){
+    min = i;
+    for(j = i+1; j < this.length; j++){
+      if( this[min] > this[j] ){
+        min = j; // 把值最小的元素的index赋给min
+      }
+    }
+    temp = this[min];
+    this[min] = this[i];
+    this[i] = temp;
+  }
+  return this;
+};
+
+// Insertion Sort:
+Array.prototype.InsertionSort = function() {
+  var i, j;
+  var res = [];
+  for(i = 0; i < this.length-1; i++){
+    for(j = i+1; j < this.length; j++){
+      
+    }
+  }
+};
+
+
+
+
+
+
+function log() {
+  var len = arguments.length;
+  for(var i = 0; i < len; i++){
+    console.log( "Log "+i, arguments[i] );
+  }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=high-dpi, user-scalable=no" />
+<title>米聊 好玩免费的手机聊天工具 | 完美支持 iPhone Android Symbian系统</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://dl.chat.xiaomi.net/miliao.ico" />
+<link rel="apple-touch-icon" href="http://dl.chat.xiaomi.net/miliao.png" />
+<link href="css/wap.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="m15wap_wrapper">     
+  
+    <div class="m15wap_heading">
+      <div class="m15wap_logo"></div>
+	    <h1 class="m15wap_h1">米聊2015</h1>
+	    <h2 class="m15wap_h2">轻了，薄了，好玩了</h2>
+			<div id="show_Android" style="display:block;">
+	      <a class="m15wap_DLBTN m15wap_download_android" href="http://mi1.cc/down302?c=100_1_android">立即下载</a>
+			</div>
+			<div id="show_iPhone" style="display:none;">
+		  	<a class="m15wap_DLBTN m15wap_download_iphone" href="http://itunes.apple.com/cn/app/id410565101?mt=8&ls=1">下载米聊2014版</a>
+			  <span class="m15wap_dltip_iphone">iPhone版暂无新版下载，可下载2014版使用</span>
+			</div>
+		</div>
+		
+		<div class="m15wap_con m15wap_gray m15wap_firstcon">
+      <h1 class="m15wap_font_blue">全新界面设计</h1>
+	    <h2>与MIUI 6一致的风格<br>全新界面，轻装上阵</h2>
+	    <div class="m15wap_pics m15wap_pic01"></div>
+		</div>
+		
+		<div class="m15wap_con">
+		  <h1 class="m15wap_font_pink">领养萌宠小冰</h1>
+	    <h2>想要一个真心只对你好的伴侣吗？<br>领养一只小冰吧！</h2>
+	    <div class="m15wap_pics m15wap_pic02"></div>
+		</div>
+
+    <div class="m15wap_con m15wap_gray">
+      <h1 class="m15wap_font_orange">小米社区&商城入驻</h1>
+	    <h2>小米社区、小米商城入驻米聊<br>看帖零距离，抢购无压力</h2>
+	    <div class="m15wap_pics m15wap_pic03"></div>
+		</div>
+
+    <div class="m15wap_con">
+      <h1 class="m15wap_font_green">米粉福利</h1>
+	    <h2>你见过哪个App里面每周都有小米4免单<br>海量F码放送的吗？</h2>
+	    <div class="m15wap_pics m15wap_pic04"></div>
+		</div>
+
+    <div class="m15wap_con m15wap_gray">
+      <h1 class="m15wap_font_purple">一起玩游戏</h1>
+	    <h2>秀出内在美、秀出操作流<br>大家一起来刷榜吧</h2>
+	    <div class="m15wap_pics m15wap_pic05"></div>
+		</div>
+
+    <div class="m15wap_foot">www.miliao.com</div>
+
+  </div><!-- end m15wap_wrapper -->
+
+  <div style="visibility:hidden">
+    <script src="http://s21.cnzz.com/stat.php?id=3162696&web_id=3162696&show=pic1" language="JavaScript"></script>
+  </div>
+	<script>
+	  var testDev = navigator.userAgent.indexOf("Android");
+		var AndroidDev = document.getElementById("show_Android");
+		var iPhoneDev = document.getElementById("show_iPhone");
+		if( testDev < 0 ){ //iPhone
+			AndroidDev.setAttribute("style", "display:none");
+			iPhoneDev.setAttribute("style", "display:block");
+		}else{ //Android
+			AndroidDev.setAttribute("style", "display:block");
+			iPhoneDev.setAttribute("style", "display:none");
+		}
+	</script>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20986806-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    var _gel = function(id){ return document.getElementById(id)}
+    function checkBrowseLoadImage(obj){
+      if(obj.height == 0){
+        _gel('downloadTxtTop') && (_gel('downloadTxtTop').innerHTML = '立即下载');
+        _gel('downloadTxtBottom') && (_gel('downloadTxtBottom').innerHTML = '立即下载');
+        _gel('logoTxt').innerHTML ='米聊';
+      }
+    }
+  </script>
+</body>
+</html>
+

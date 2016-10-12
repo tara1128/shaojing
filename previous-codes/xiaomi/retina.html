@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>测试Retina屏幕效果</title>
+		<link rel="shortcut icon" href="http://i1.ml.mi-img.com/img/miliaonew/favicon.ico">
+		<script src="http://static.xiaomi.net/scripts/jquery-1.5.1.min.js"></script>
+		<style>
+		</style>
+	</head>
+  <body>
+	  <div class="wrap">
+		  <p class="txt">看下面两个图片</p>
+			<img src="" class="big" width="394">
+			<img src="" class="sma" width="394">
+		</div>
+		<div class="wrap tips">
+		</div>
+  </body>
+	<script>
+	  var Retina = false;
+	  if( window.devicePixelRatio > 1 ){
+		  alert("Hi，我是Retina屏哦！我的devicePixelRatio是 " + window.devicePixelRatio);
+			Retina = true;
+		}else{
+			alert("Sorry，我不是Retina屏哦！");
+		};
+		if( Retina ){
+			$(".big").attr("src", "https://land.xiaomi.net/res/3745064/land/miwifi//wf_app_logo@2x.png");
+			$(".sma").attr("src", "https://land.xiaomi.net/res/3745064/land/miwifi//wf_app_logo.png");
+		}else{
+			$(".big").attr("src", "https://land.xiaomi.net/res/3745064/land/miwifi//wf_app_logo.png");
+		}
+	</script>
+</html>

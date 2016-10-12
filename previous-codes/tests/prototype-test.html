@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Prototype, Constructor and Object</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="wrapper" id="Wrapper">
+  <div class="container960 second-child" id="Contents">
+    <h1>Hello guys!</h1>
+    <h2>Welcome to the world of Javascript!</h2>
+  </div>
+</div><!-- wrapper -->
+<script>
+// 原型模式创建自定义类型：Phone
+function Phone() {};
+Phone.prototype.brand = 'iphone';
+Phone.prototype.version = '6s';
+Phone.prototype.price = 5199;
+Phone.prototype.showOff = function() {
+  alert("My cellphone is "+this.brand+" "+this.version+", which cost me "+this.price+"RMB !");
+};
+var phone1 = new Phone();//重写原型之前new实例，还有showOff方法！
+// console.log(Phone.prototype.constructor );//重写之前，constructor指向Phone构造函数
+Phone.prototype = { // 这种形式相当于重写了原型
+  brand: 'Xiaomi',
+  version: 'Max',
+  price: 1499,
+  callOut: function() {
+    alert('My phone is '+this.brand+' '+this.version+', which is '+this.price+'RMB .' );  
+  },
+  constructor: Phone // 手动让它指回Phone构造函数，但constructor的Enumerable就变为true了，会被for-in枚举
+};
+// console.log(Phone.prototype.constructor);//重写后constructor指向Object而不是Phone，除非手动指回Phone
+var phone2 = new Phone();//重写原型之后再new实例，就没有showOff方法！
+// for(var _p in phone2){ console.log(_p);} // constructor 会被for in枚举出来！所以要这样写：
+Object.defineProperty(Phone.prototype, "constructor", {
+  enumerable: false, // 手动设其Enumerable为false
+  value: Phone // 在这里也是手动将其指回Phone构造函数
+});
+// for(var _p in phone2){ console.log(_p);} // 这次constructor不会被for in枚举到了！
+
+// 最PERFECT的模式来创建自定义类型：
+// 用构造函数模式定义实例个性化属性，用原型模式定义所有实例共享的方法和属性
+function Person(name, age, city) { // new 实例的时候，自定义这些属性
+  this.name = name;
+  this.age = age;
+  this.city = city;
+  this.infos = ['id', 'gender'];
+};
+Person.prototype = {
+  constructor: Person, // constructor属性要手动指回Person，只不过Enumerable变true
+  speak: function() { // 所有实例的公用方法
+    //console.log("I am "+this.name+" from "+this.city+", "+this.age+" years old.", this.infos);
+  },
+  addInfos: function(newInfo) { // 所有实例共用方法
+    this.infos.push( newInfo );
+  }
+};
+var alex = new Person("Alexandra", 33, "Beijing");
+alex.speak();
+alex.addInfos("school");
+alex.speak();
+var joe = new Person("Joe", 30, "Shanghai");
+joe.speak();
+joe.addInfos("address");
+joe.speak();
+
+
+// 寄生构造函数模式（不推荐使用）：
+function SpecialArray(){
+  var values = new Array(); // 有new
+  values.push.apply(values, arguments);
+  values.makeString = function() {
+    return this.join(" | ");
+  };
+  return values; // 有return，和工厂模式一样
+  // 最后return的实例，是Array的实例，不是SepcialArray的实例！
+};
+var myArray = new SpecialArray("A", "B", "Tara"); // new了一个实例
+// console.log(myArray.constructor, myArray.makeString() ); // 构造函数是Array（里面有new Array()）
+// console.log(myArray instanceof SpecialArray); // false，因为最后return的实例是Array的实例！
+// console.log(myArray instanceof Array); // true
+
+// 稳妥模式（durable objects）：更安全，不用this，也不能用new来创建实例，instanceof也用不到！
+function Student(id, name, school) {
+  var s = new Object();
+  s.id = function() { return id; };
+  s.name = function() { return name; }
+  s.school = function() { return school; }
+  return s;
+};
+var student1 = Student(1001, "Xiaoming", "No.18 MiddleSchool");
+var student2 = Student(1002, "Wanghong", "No.30 MiddleSchool");
+// console.log( student1.name(), student2.school() );
+
+
+// 用原型链和构造函数，实现继承：（组合继承）
+// 祖父：
+function GrandFather( name ) {
+  this.name = name;
+  this.age = 88;
+  this.friends = ['Joe', 'Kate'];
+};
+GrandFather.prototype = {
+  constructor: GrandFather,
+  speak: function() {alert("Grandpa is speaking, " + this.name); return "GrandPa spoke.";}
+};
+// 父亲：
+function Father(name) {
+  //call的第一个参数表示把当前环境（Father）里的this覆盖call主语函数（GrandFather）里的this.
+  GrandFather.call(this, name);
+  this.age = 55;
+  this.fatherOnly = 'father only';
+};
+Father.prototype = new GrandFather();//Father的原型是GrandFather的实例。继承！
+Father.prototype.constructor = Father;
+Father.prototype.shout = function(){alert("I am father "+this.name); return "Father shouted.";};
+// 儿子：
+function Son(name, age) {
+  Father.call(this, name); //call Father，Father又call了GrandFather构造函数！So, this有了friends属性
+  this.age = age;
+  this.sonOnly = "Son only";
+};
+Son.prototype = new Father(); //Son的原型是Father的实例，Son继承自Father
+// 两个儿子实例：
+var Harry = new Son("Harry", 18);
+var Aaron = new Son("Aaron", 20);
+// console.log( Harry.friends );
+Harry.friends.push("Alex");
+Aaron.friends.push("Jade");
+// console.log( Harry.friends, Aaron.friends );
+
+
+</script>
+</body>
+</html>

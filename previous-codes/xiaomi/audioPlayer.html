@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>在浏览器中播放音频，兼容各主流浏览器，播放界面可以自定义的哦！</title>
+    <style>
+      html, body, p, input, textarea, fieldset, h1, h2, h3, h4, h5, h6, ul, li, ol, button, form{margin:0; padding:0;}
+      a{text-decoration:none;}
+      .wrapper{margin:10px auto;width:600px;background:#EEE;padding:10px;}
+      .wrapper h1{font-size:18px;text-align:center;line-height:3.5em;color:#4E4444;}
+      .aud{display:block;font-size:14px;color:#4E4444;line-height:3em;background:#DDD;border-top:1px solid #FFF;border-bottom:1px solid #CCC;padding:0 10px;}
+      .aud_play{background:#4E4444;color:#FFF;}
+    </style>
+    <script src="script/jquery.js"></script>
+    <script src="script/audioPlayer.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>这是一个在浏览器中播放音频的示例</h1>
+      <!-- a class="aud audioplayer" href="javascript:void(0)" src="http://lxcdn.dl.files.xiaomi.net/mfsv2/convert/s008/p01CI7Ofxg7x/cyBj8KNMWx5P0Q.spx?totype=mp3&cert=105c73670063cb21699159529b39bb3f">Listen to this</a>
+      <a class="aud audioplayer" href="javascript:void(0)" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Listen to this</a>
+      <a class="aud audioplayer" href="javascript:void(0)" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Listen to this</a>
+      <a class="aud audioplayer" href="javascript:void(0)" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Listen to this</a>
+      <a class="aud audioplayer" href="javascript:void(0)" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Listen to this</a -->
+      <!-- a href="javascript:void(0)" class="audioplayer aud" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Click to Listen</a>
+      <a href="javascript:void(0)" class="audioplayer aud" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Click to Listen</a -->
+      <a href="javascript:void(0)" class="audioplayer aud" src="http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3">Click to Listen</a>
+
+      <button id="del">Delete</button>
+      <button id="add">Add One</button>
+      <button id="trigger">Trigger</button>
+
+    </div>
+  </body>
+</html>
+<script>
+  var snd1 = "http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01yxrxuWKWH/h0redDOzWwDS1P.mp3";
+  var snd2 = "http://files.preview.n.miliao.com/mfsv2/download/tmp1/v01FxIDxebDz/uhk0qpcYBNRJ56.mp3";
+  var auds = $(".audioplayer");
+  auds.bind("click", function(){
+    if( !$(this).hasClass("disabled") ){
+      audioPlayer( this, "aud_play", "aud" )  //第二个参数是播放时的class，第三个参数是停止时的class
+    }
+  });
+  $("#del").click(function(){
+    auds.attr("src", "");
+    auds.addClass("disabled");
+  });
+  $("#add").click(function(){
+    auds.removeClass("disabled");
+    auds.attr("src", snd1);
+  })
+  // 重写src属性是不行的。如果想播放第二次上传的音频，则只能去掉原来的结构元素，append新的结构元素，重新初始化。
+  $("#trigger").click(function(){
+    auds.trigger("click");
+  })
+</script>

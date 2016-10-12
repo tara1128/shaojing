@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div(class='wrapper')
+    div(class='reg-wrapper clearfix' id='J_regWrapper')
+      h1(class='wrapper-title') #{title}
+      h2(class='wrapper-subtitle') #{desc}
+      div(class='login-div J_regNicknameDiv')
+      div(class='login-div J_regPhoneDiv')
+      div(class='login-div J_regPasswordDiv')
+      div(class='login-div J_regConfirmPasswordDiv')
+      a(class='login-btn btn-primary J_Register fr' href='javascript:;') Register
+      div(class='ft-desc cl') Already been a customer? 
+        a(class='ft-btn J_gotoReg' href='/') Sign in
+
+  script(type='text/javascript' src='/javascripts/reg.js')

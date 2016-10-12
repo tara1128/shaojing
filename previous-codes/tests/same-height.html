@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 多列等高的布局 </title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+<style>
+.out-wrapper{
+  margin:0 auto;
+  width:960px;
+  overflow: hidden;
+}
+.right-container, .content-container, .left-container{
+  position:relative;
+  width:100%;
+  float:left;
+}
+.right-container{
+  background:black;
+  overflow:hidden;
+}
+.content-container{
+  background:orange;
+  right: 320px; /* Same as the width of right menu */
+}
+.left-container{
+  background:green;
+  right:420px; /* Same as the width of content */
+}
+.left, .content, .right{
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+.left{
+  width: 220px;
+  left: 740px;
+}
+.content{
+  width: 420px;
+  left: 740px;
+}
+.right{
+  width: 320px;
+  left: 740px;
+  background: pink;
+}
+</style>
+</head>
+<body>
+  <h1>多列等高的布局</h1>
+  <div class="out-wrapper">
+
+    <div class="right-container">
+      <div class="content-container">
+        <div class="left-container">
+          
+          <div class="left"> I am the left ...</div>
+          <div class="content"> I am contents. <br> I am contents.<br>I am...</div>
+          <div class="right"> I am right here...</div>
+
+        </div><!-- left-container -->
+      </div><!-- content-container -->
+    </div><!-- right-container -->
+
+  </div><!-- wrapper -->
+<script>
+
+
+
+
+function log() {
+  var len = arguments.length;
+  for(var i = 0; i < len; i++){
+    console.log( "Log "+i, arguments[i] );
+  }
+};
+</script>
+</body>
+</html>

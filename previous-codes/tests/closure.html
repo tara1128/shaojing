@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Closures</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+<style></style>
+</head>
+<body>
+<div class="wrapper" id="Wrapper">
+  <div class="container960 second-child" id="Contents">
+    <h1 class="h1 world" id="myId">Hello guys</h1>
+    <h2 class="h2">Welcome to the world of Javascript!</h2>
+    <h2 class="h2">Learn something about Execution Context and Closures...</h2>
+    <a class="entry-btn" id="Button">Check</a>
+  </div>
+</div><!-- wrapper -->
+<script>
+// toJSON()
+var book = {
+  title: "Gone with wind",
+  price: 39,
+  edition: 3,
+  year: 2012,
+  author: 'M',
+  releaseDate: new Date(2012, 10, 28)
+  // toJSON: function() {}
+};
+var json = JSON.stringify(book);
+var json_filter = JSON.stringify(book, function( key, value ){
+  switch (key) {
+    case "author":
+      return "A woman";
+    case "price":
+      return undefined;
+    default:
+      return value;
+  }
+}, 3); // 3个空格缩进，最大为10，大于10的处理为10
+// console.log( json );
+// console.log( json_filter );
+var bookCopy = JSON.parse(json, function( key, value) {
+  if(key == "releaseDate"){
+    return new Date(value); // 转换回Date对象
+  }else{
+    return value;
+  }
+});
+// console.log( bookCopy );
+
+
+// 先看这一段代码：
+var name = 'Window...';
+var obj = {
+  name: 'object...',
+  getName: function(){
+    alert(this.name);
+  }
+};
+// obj.getName();//object...
+// 改写一下obj的getName方法：
+obj.getName2 = function() {
+  return function() {
+    alert(this.name);
+  }
+};
+// console.log( obj.getName2() ); // 返回的是一个function
+// obj.getName2()(); //执行这个function，是window...
+
+
+// Another Closure:
+function adder(x) {
+  return function(y) {
+    return x+y;
+  }
+};
+var n1 = adder(7);
+var n2 = 2;
+var res = n1(n2); // 9
+
+// 用特权方法隐藏那些不愿被外部修改的值：
+function Person(name) {
+  this.getName = function() {
+    return name;
+  };
+  this.setName = function( newName ) {
+    name = newName;
+  }
+};
+var person1 = new Person("Tara");
+// console.log( person1.getName() ); // Tara
+person1.setName("Alex");
+// console.log( person1.getName() ); // Alex
+// console.log( person1.name ); // undefined 不能从实例直接访问name
+
+// 在私有作用域中定义私有变量
+(function(){
+  var name = '';
+  Person = function(value) {
+    name = value;
+  };
+  Person.prototype.getName = function(){
+    return name;
+  };
+  Person.prototype.setName = function(newName){
+    name = newName;
+  }
+})();
+var harry = new Person("Harry");
+//console.log( 101, harry.getName() ); // Harry
+var kathy = new Person("Kathy"); // name为所有实例共享，因此harry被新的kathy覆盖
+//console.log( 102, harry.getName() ); // Kathy
+//console.log( 201, kathy.getName() ); // Kathy
+window.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, errorObj) {
+  console.log('Window has error, message is', errorMessage);
+  console.log('Window has error, script url is', scriptURI);
+  console.log('Window has error, line number is', lineNumber);
+  console.log('Window has error, column number is', columnNumber);
+  console.log('Window has error, error object is', errorObj);
+};
+//var a.length + b.ths; // This variable definition will be hoisting above window's onerror.
+try{
+  noname;
+} catch(e) {
+  //console.log('Catch e: ' + e); // ReferenceError: noname is not defined(typeof e:'object')
+}
+
+
+</script>
+</body>
+</html>

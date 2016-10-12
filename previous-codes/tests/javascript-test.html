@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learning Javascript</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+<script>
+/*
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-64284986-1', 'auto');
+  ga('send', 'pageview');
+  */
+</script>
+</head>
+<body>
+<div class="wrapper" id="Wrapper">
+
+  <div class="first-child">First child</div>
+  <div class="container960 second-child" id="Contents">
+    <h1>Hello world</h1>
+    <h2>Welcome to javascript world</h2>
+    <a class="entry-btn" name="myAnchor" href="playreact/index.html">Check React</a>
+  </div>
+  <div class="last-child third-child" id="LastNode"></div>
+
+</div><!-- wrapper -->
+<script>
+// Node DOM 接口：
+var Wrap = document.getElementById("Wrapper");
+var Last = document.getElementById("LastNode");
+var Cont = document.getElementById("Contents");
+var Docu = Wrap.ownerDocument; // 直接返回文档节点document
+// console.log(Docu.nodeType); // 9
+// console.log( Docu.documentElement, Docu.body, Docu.doctype );
+// console.log( document.documentElement, document.body);// document === Docu
+console.log( document.title );
+document.title = "New title for this page";
+console.log( document.anchors );
+var newNode = document.createElement("s");
+var newText = document.createTextNode("I am a new node with tag S");
+var anotherNewNode = document.createElement("span");
+newNode.appendChild(newText);
+// console.log( Last.parentNode, Last.hasChildNodes() );
+// Wrap.appendChild( Wrap.childNodes[1] ); // appendChild把已有节点移动到最后位置，返回新节点
+// Wrap.appendChild( newNode );
+// Wrap.insertBefore( newNode, Wrap.firstChild );//返回被插入的节点
+// Wrap.replaceChild( newNode, Wrap.lastChild );//返回被替换的节点
+// Wrap.removeChild( Wrap.lastChild );//返回被移除的节点
+// cloneNode(true)节点深复制和cloneNode(false)节点浅复制：
+var deepCloneContainer = Cont.cloneNode(true); // Cont的子节点树也被复制
+var shallowCloneContainer = Cont.cloneNode(false);
+Wrap.appendChild(deepCloneContainer); // 复制后必须appendChild或insertBefore，否则是孤儿
+Wrap.appendChild(shallowCloneContainer);
+for(var i = 0, len = Wrap.childNodes.length; i < len; i++){
+  // console.log( i, Wrap.childNodes[i]);
+}
+
+// 自定义构造函数来创建对象：
+function Apartment(id, floor, owner){
+  this.id = id;
+  this.floor = floor;
+  this.owner = owner;
+  this.declare = function() {
+    alert( "This " + this.floor + "-floor apartment belongs to " + this.owner + " !" );
+  }
+};
+var myApartment = new Apartment( 1001, 6, "Alex" );
+var hisApartment = new Apartment( 1002, 3, "Joe" );
+// console.log( myApartment, hisApartment, myApartment instanceof Apartment );
+// console.log(myApartment.constructor === Apartment); // constructor属性指向构造函数
+
+// 构造函数也可以不用new来普通调用，或者用call(or apply)：
+Apartment(1010, 5, "Wendy"); // for Window
+var Kate = new Object();
+var Jane = new Object();
+Apartment.call( Kate, 1012, 7, "Kate" ); // call的第一个参数，表示call的主语函数内部this
+Apartment.apply( Jane, [1008, 11, "Jane"] ); // apply的传参形式和call不同，其余都一样！
+// console.log( window.floor, Kate.owner );
+// Jane.declare();
+
+
+
+
+// 数组的5个迭代方法：IE8不支持
+var myarray = [100, 200, 20, 30, 35, 50, 0, 70, 80, 90];
+// every() 必须每一项都true才最终返回true，一旦false，就退出，返回false
+var res_every = myarray.every(function( item, index, theArray ){
+  // console.log("Array every(): ", item, index, theArray);
+  return ( item > 50 ); // 遍历完第三项(20)就退出
+});
+// console.log("res_every = ", res_every);
+// some() 至少有一项满足就整体返回true，然后直接退出
+var res_some = myarray.some(function( item, index, theArray ){
+  // console.log("Array some(): ", item, index, theArray);
+  return ( item > 150 ); // 遍历完第二项(200)就退出
+});
+// console.log("res_some = ", res_some);
+// filter() 返回符合条件的元素们组成的新数组
+var res_filter = myarray.filter(function( item, index, theArray ){
+  // console.log("Array filter(): ", item, index, theArray);
+  return ( item > 50 ); // 全部遍历，把复合这个条件的元素组成一个数组，返回这个数组
+});
+// console.log("res_filter = ", res_filter);
+// map() 对每一项做某个操作，返回每一项操作后的结果组成的新数组
+var res_map = myarray.map(function( item, index, theArray ){
+  // console.log("Array map(): ", item, index, theArray);
+  return item * 2; // 全部遍历，对每个元素都执行这个操作，再返回每个操作结果组成的新数组
+});
+// console.log("res_map = ", res_map, myarray); // 不改变原数组
+// forEach() 对每一项做某个操作，没有返回值，相当于用for遍历数组而已
+var array_forForEach = [];
+myarray.forEach(function( item, index, theArray ){
+  // console.log("Array forEach(): ", item, index, theArray);
+  item = item + 1; // 全部遍历，对每个元素都执行这个操作，没有返回值
+  array_forForEach.push(item);
+});
+// console.log("forEach: ", myarray, array_forForEach);
+
+// 数组的归并方法：reduce() reduceRight()
+var values = [1,3,5,7,9,11];
+var sumOfReduce = values.reduce(function( prev, cur, index, theArray ){
+  // 从第二项开始遍历。每一次循环返回的值，都是下一次循环的第一个参数prev
+  // console.log( "Doing reduce: ", prev, cur, ". index = " + index );
+  return prev + cur;
+});
+// console.log("sumOfReduce = ", sumOfReduce);
+// reduceRight() 从倒数第二项开始遍历，第一次遍历的prev是数组最后一项
+var sumOfReduceRight = values.reduceRight(function( prev, cur, index, theArray ){
+  // console.log( "Doing reduceRight: ", prev, cur, ". index = " + index );
+  return prev * cur;
+});
+// console.log("sumOfReduceRight = ", sumOfReduceRight);
+
+// 函数内部的arguments对象的callee属性（callee是个指针，指向拥有这个arguments对象的函数）：
+function testCallee() {
+  var theCallee = arguments.callee;
+  return theCallee;
+  // 当需要递归（函数在内部调用自己）时，不用函数名，而用arguments的callee
+};
+//console.log( testCallee() );
+// 递归的典型应用就是计算阶乘：
+function factorial(num) {
+  if( num <= 1) {
+    return num;
+  }else{
+    // return num * factorial(num-1); 
+    // 耦合函数名，一旦函数名在外部用来再次赋值，anotherFactorial就要报错了！
+    return num * arguments.callee(num-1);
+  }
+};
+var anotherFactorial = factorial; // 复制这个函数的引用到新变量anotherFactorial里
+factorial = null; //如果factorial内部不用callee，那么被null之后，anotherFactorial也不能用了
+//console.log( anotherFactorial(3) );
+
+// 对象的访问器属性
+var book = {
+  // _year: 2004, // 下划线表示只能通过对象方法访问的属性
+  // edition: 1
+}
+/*
+Object.defineProperty(book, "year", {
+  get: function() {
+    return this._year;
+  },
+  set: function( newYear ) {
+    if( newYear > 2004 ) {
+      this._year = newYear;
+      this.edition += newYear - 2004;
+    }
+  }
+});
+*/
+// 也可以用defineProperties:
+Object.defineProperties(book, {
+  _year: {value: 2006}, // 普通属性
+  edition: {value: 1}, // 普通属性
+  year: { // 这个year的enumerable和configurable的属性都是false，不能被for-in枚举
+    get: function() { return this._year; },
+    set: function(newYear) {
+      if(newYear > 2006){
+        this._year = newYear;
+        this.edition += newYear - 2006;
+      }
+    }
+  }
+});
+// 用途：设置一个属性的值导致其他属性发生变化！
+book.year = 2012;
+for(var p in book){
+  console.log( p, book[p] ); // for-in枚举不到year属性
+}
+// console.log( book.year, book.edition, book._year, book );
+var desc = Object.getOwnPropertyDescriptor(book, "year");
+// console.log(desc, desc.configurable, desc.value);
+
+
+// 延长作用域链：
+function buildUrl() {
+  var qs = "?debug=true";
+  with (location) {
+    var url = href + qs;
+  }
+  return url;
+};
+// console.log( "The Url is ", buildUrl() );
+
+
+// 格式化URL的参数列表，获取所需数据
+function formatURL() {
+  var arr = window.location.search.substring(1).split("&");
+  var res = {};
+  $.each(arr, function( index, value ){
+    var xObj = value.split("=");
+    res[ xObj[0] ] = xObj[1];
+  });
+  return res;
+};
+
+
+// 闭包Closure：
+function readInnerNumber() {
+  var innerNum = 'I am an inner number: 119 !';
+  function content() {
+    return innerNum;
+  };
+  return content;
+};
+var read = readInnerNumber();
+//console.log('Closure: ', read() );
+
+// 再来一个闭包的例子：
+function getInnerContent() {
+  var text = 'Hi, this is an example of closure! ';
+  var getText = function() {
+    return text;
+  };
+  return getText();
+};
+//console.log('Closure: ', getInnerContent() );
+
+
+// 原型继承：
+function Father() {
+  this.familyName = 'Clinton';
+  this.name = 'myName is Father';
+};
+function Son() {
+  this.age = 10;
+  this.name = 'myName is Son';
+};
+Son.prototype = new Father(); // Son的原型对象，被赋值为Father的一个实例
+var son = new Son();
+var father = new Father();
+//console.log('原型继承：', son.familyName, son.age, son);
+//console.log('Proto: ', son.__proto__);
+//console.log('Name: ', son.name, father.name);
+
+// 另一个原型继承的例子：
+function Person(name) {
+  this.name = name;
+};
+Person.prototype.company = 'Microsoft'; //设置原型的属性
+Person.prototype.sayHello = function() { //设置原型的方法
+  //console.log('Hello, I am ' + this.name + ' from ' + this.company + '!');
+};
+//var BillGates = new Person('BillGates'); //创建一个实例
+//BillGates.sayHello();
+var SteveJobs = new Person('SteveJobs'); //创建一个实例
+SteveJobs.company = 'Apple';//设置自己的属性，会覆盖prototype的company属性
+SteveJobs.sayHello();
+
+// 冒泡排序：
+function maoPaoPaiXu(arr) {
+  var temp;
+  for(var i = 0; i < arr.length; i++){
+    for(var j = 0; j < arr.length-i-1; j++){
+      if(arr[j] > arr[j+1]){ // 大的往后放！
+        temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+  return arr;
+};
+var myArray = [ 10, 29, 22, 45, 10, 3, 89, 17, 90 ];
+//console.log('冒泡排序：', maoPaoPaiXu(myArray) );
+
+// 字符串逆序：
+function reverseString(string) {
+  if(string.length == 0){
+    return string;
+  }else{
+    return reverseString( string.substring(1, string.length) ) + string.substring(0, 1);
+  }
+};
+//console.log('字符串逆序：', reverseString('Hello') );
+
+</script>
+<script src="build/js/combo.js"></script>
+</body>
+</html>

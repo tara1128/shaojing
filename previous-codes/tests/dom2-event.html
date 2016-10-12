@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM 2 Event</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="wrapper" id="Wrapper">
+  <div class="container960 second-child" id="Contents">
+    <h1>Hello guys!</h1>
+    <h2>Welcome to the world of Javascript!</h2>
+    <a class="entry-btn" id="Button">Check</a>
+  </div>
+</div><!-- wrapper -->
+<script>
+
+var Wrap = document.getElementById("Wrapper");
+var Cont = document.getElementById("Contents");
+var Butn = document.getElementById("Button");
+// DOM1级事件处理程序：
+// Butn.onclick = function() { console.log( "Clicking button" ); }
+// Cont.onclick = function() { console.log( "Clicking container" ); }
+// Wrap.onclick = function() { console.log( "Clicking wrapper" ); }
+// window.onclick = function() { console.log("Window clicked"); }
+// DOM2级事件处理程序:addEventListener removeEventListener
+Butn.addEventListener("click", function(){
+  console.log("Button is clicked!");
+},true);//true 表示在捕获阶段处理事件，因此点击后，执行顺序是window-wrapper-container-button
+Cont.addEventListener("click", function(){
+  console.log("Container is clicked!");
+},false);//false表示在冒泡阶段处理事件，点击后先执行button的事件，再执行container的事件
+Wrap.addEventListener("click", function(){
+  console.log("Wrapper is clicked!");
+},true);
+window.addEventListener("click", function(){
+  console.log("Window is clicked!");
+},true);
+
+</script>
+</body>
+</html>

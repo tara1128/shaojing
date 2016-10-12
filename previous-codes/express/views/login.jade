@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div(class='wrapper')
+
+    div(class='login-wrapper clearfix' id='J_loginWrapper')
+      h1(class='wrapper-title') #{title}
+      h2(class='wrapper-subtitle') #{desc} Sign In and Enjoy!
+      div(class='login-div J_usernameDiv')
+      div(class='login-div J_passwordDiv')
+      a(class='login-btn btn-primary J_login fr' href='javascript:;') Sign In
+      div(class='ft-desc cl') New customer? 
+        a(class='ft-btn J_gotoReg' href='/reg') Start here
+
+
+  script(type='text/javascript' src='/javascripts/login.js')

@@ -1,0 +1,245 @@
+/*
+  CSS for index
+  Author: Alex Wang
+  Date: 2015-08-25
+  Latest modified: 2016-03-25 15:46
+*/
+
+@font-face {
+  font-family: "Roboto_Light";
+  src: url("https://webcdn.jide.com/jide_upload/2016_01/1453365686573_APJp5o_Roboto-Light.ttf") format("truetype");
+}
+
+body {
+  background-color: #f1f3f5;
+  font-family: 'Roboto_Light', STHeiti, Arial!important;
+}
+
+.wrapper {
+  width: 100%;
+}
+.wrapper .fl {
+  float: left;
+}
+.wrapper .fr {
+  float: right;
+}
+.wrapper .cl {
+  clear: both;
+}
+
+.login-wrapper, .reg-wrapper {
+  position: relative;
+  margin: 100px auto 0;
+  padding: 20px 0 50px;
+  width: 460px;
+}
+
+.wrapper-title, .wrapper-subtitle {
+  line-height: 1em;
+  text-align: center;
+  font-weight: normal;
+}
+
+.wrapper-title {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #717171;
+}
+.wrapper-subtitle {
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #c8c8c8;
+}
+.login-div {
+  margin: 10px auto;
+}
+.login-btn {
+  margin-top: 30px;
+}
+
+.ft-desc {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  margin-left: -29%;
+  padding: 5px 0;
+  width: 58%;
+  background: #c8c8c8;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.ft-btn {
+  color: #62aac3;
+  padding-left: 5px;
+}
+
+
+/* Contents shown after login */
+.content-wrapper {
+  width: 100%;
+}
+.box960 {
+  margin: 0 auto;
+  width: 960px;
+}
+/* nav */
+.content-nav-inner {
+  position: relative;
+  height: 100%;
+}
+.content-nav {
+  padding: 50px 0 0;
+  width: 100%;
+  height: 120px;
+  background-color: #62aac3;
+}
+.content-title {
+  margin: 0px;
+}
+.content-title a {
+  text-decoration: none;
+  font-size: 28px;
+  color: #fff;
+}
+.content-title a:hover {
+  color: #f1f3f5;
+}
+.content-userinfo {
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
+  font-size: 14px;
+  line-height: 1em;
+  color: #fafafa;
+}
+.content-userinfo span {
+  padding-right: 20px;
+}
+.content-userinfo a {
+  color: #fafafa;
+  padding-left: 17px;
+  border-left: 1px solid #ccc;
+}
+/* content main */
+.content-main {
+  width: 100%;
+}
+.content-main-inner {
+  padding: 50px 0;
+}
+/* main left */
+.content-leftPan {
+  width: 74%;
+}
+.content-dialogframe {
+  margin-bottom: 30px;
+  min-height: 500px;
+  border: 1px solid #c8c8c8;
+  box-shadow: 2px 2px 5px #ddd;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.content-editframe {
+  min-height: 50px;
+}
+.content-editarea, .content-editsend {
+  display: block;
+  height: 50px;
+  border-radius: 2px;
+}
+.content-editarea {
+  box-sizing: border-box;
+  padding: 0 5px;
+  float: left;
+  width: 80%;
+  font-size: 14px;
+  color: #4e4444;
+  line-height: 1.5em;
+  border: 1px solid #c8c8c8;
+  resize: none;
+}
+.content-editsend {
+  width: 18%;
+  float: right;
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #4491a5;
+  color: #fff;
+  cursor: pointer;
+}
+.content-editsend:hover {
+  background-color: #62aac3;
+  text-decoration: none;
+}
+.one-says {
+  margin: 6px 12px;
+  font-size: 14px;
+  line-height: 24px;
+}
+.one-says.me {
+  text-align: right;
+}
+.one-says .person {
+  color: #62aac3;
+  font-weight: bold;
+}
+.one-says .sentence {
+  color: #4e4444;
+}
+.one-says .times {
+  color: #c8c8c8;
+  font-size: 12px;
+}
+
+/* main right */
+.content-rightPan {
+  padding: 15px 0;
+  width: 21%;
+  border: 1px solid #c8c8c8;
+  box-shadow: 2px 2px 5px #ddd;
+  border-radius: 2px;
+  background-color: #fff;
+  min-height: 150px;
+}
+.content-rightPan h1 {
+  font-size: 16px;
+  color: #717171;
+  text-align: center;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: normal;
+}
+.content-userlist {
+  margin: 10px auto 0;
+  width: 86%;
+}
+.one-user {
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #62aac3;
+  clear: both;
+  cursor: pointer;
+}
+
+/* welcome page */
+.welcome-wrapper {
+  margin: 0 auto;
+  padding: 250px 0;
+  width: 740px;
+}
+.welcome-wrapper h1 {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 24px;
+  color: #575757;
+  font-weight: normal;
+}
+.welcome-wrapper .btn-primary {
+  margin: 0 auto;
+}

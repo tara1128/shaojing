@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div(class='wrapper')
+
+    div(class='content-wrapper clearfix' id='J_contentWrapper')
+      div(class='content-nav')
+        div(class='content-nav-inner box960 clearfix')
+          h1(class='content-title')
+            a(href='/') #{title}
+          div(class='content-userinfo')
+            span(class='J_info')
+            a(class='J_logout' href='javascript:;') Sign Out
+      div(class='content-main')
+        div(class='content-main-inner box960 clearfix')
+          div(class='content-leftPan fl')
+            div(class='content-dialogframe')
+              div(class='content-realtime J_showDialogs')
+            div(class='content-editframe clearfix')
+              textarea(class='content-editarea J_textarea' placeholder='You can use ENTER to send message!')
+              a(class='content-editsend J_editSend') Send
+          div(class='content-rightPan fr')
+            h1 Active users
+            div(class='content-userlist J_userList clearfix')
+
+
+  script(type='text/javascript' src='/javascripts/chat.js')

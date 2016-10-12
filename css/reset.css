@@ -1,0 +1,65 @@
+/*!
+ * Version: 2.0.1
+ * Author: Alexandra Wang
+ * Github: https://github.com/tara1128
+ * Latest modified date: 2016-10-12 13:37
+ */
+
+/* Old reset 
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, abbr, article, aside, command, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time{margin:0;padding:0;}
+a{text-decoration:none;}
+ul, ol, li{list-style:none outside;}
+img{border:none;}
+s{font-style:normal; text-decoration:none;}
+::-moz-selection {background:#d7ba78;color:#fff;} /* 设置全局文字被选中时的背景色和字体色 */
+::selection {background:#d7ba78;color:#fff;}
+
+/* New reset */
+.section:after, ul.nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+body { line-height:1; }
+ol,ul { list-style:none; }
+blockquote,q { quotes:none; }
+blockquote:before,blockquote:after,q:before,q:after { content:'';content:none; }
+ins, a { text-decoration:none; }
+del { text-decoration:line-through; }
+table { border-collapse:collapse;border-spacing:0; }
+
+/* global */
+@font-face {
+  font-family: "Roboto_Light";
+  src: url("../public/fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto_Bold";
+  src: url("../public/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto_Thin";
+  src: url("../public/fonts/Roboto-Thin.ttf") format("truetype");
+}
+/* Clearing floats */
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}

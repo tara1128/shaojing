@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
+<link type="text/css" href="build/css/combo.css" rel="stylesheet">
+<script src="public/jquery-1.9.1.min.js"></script>
+<style>
+.box { margin:10px auto;width:300px;padding:10px;background:#f1f3f5;border:2px solid #DDD; }
+.box p { font-size:14px;line-height:1.4em;color:#008cff; }
+.btn {display:block;width:45%;height:30px;background:#008cff;color:#fff;text-align:center;line-height:30px;font-size:14px;border-radius:5px;cursor:pointer;}
+.btn.left {float:left;}
+.btn.right {float:right;}
+.btn-wrapper {margin:20px auto 0;width:220px;padding:10px 0;border:1px dashed #eee;}
+.canv {margin:10px auto;display:block;}
+</style>
+</head>
+<body>
+  <div class="wrapper" id="Wrapper">
+    <div class="box" id="Box">
+      <p id="Fir">Today we are learning Canvas Drawing.</p>
+      <p id="Sec">Also here are some codes about prototype.</p>
+      <p>The third paragraph.</p>
+      <p>The fourth paragraph.</p>
+    </div>
+    <canvas class="canv" id="Canv" width="200" height="100">A drawing of canvas.</canvas>
+    <div class="btn-wrapper">
+      <a class="btn left" id="BtnL">Left Button</a>
+      <a class="btn right" id="BtnR">Right Button</a>
+    </div>
+  </div><!-- wrapper -->
+<script>
+var wrap = document.getElementById("Wrapper");
+var box  = document.getElementById("Box");
+var btnL = document.getElementById("BtnL");
+var btnR = document.getElementById("BtnR");
+var secd = document.getElementById("Sec");
+var canv = document.getElementById("Canv");
+if( !canv.getContext ){
+  alert( "Your browser does not support Canvas!" );
+}else{
+  var context = canv.getContext("2d");
+  // Draw a border outside:
+  context.strokeStyle = "#4e4444";
+  context.strokeRect(0,0, 200, 100);
+  // Draw a blue rectangle:
+  context.fillStyle = "rgba(0, 0, 255, 0.5)";
+  context.fillRect(0, 0, 50, 50);
+  // Draw another rectangle:
+  context.fillStyle = "rgba(255, 0, 0, .5)";
+  context.fillRect(25, 25, 50, 50);
+  // Make a hole in the sharing area:
+  context.clearRect( 37.5, 37.5, 12.5, 12.5 );
+
+  // Draw a line:
+  context.beginPath();//绘制路径开始时必须用beginPath方法
+  context.arc(100, 50, 50, 0, 2*Math.PI, false);//外圆
+  context.moveTo(140, 50); // 内圆绘制之前，必须把游标放在内圆的圆周上的某个点
+  context.arc(100, 50, 40, 2*Math.PI, 0, false);//内圆
+  context.moveTo(100, 50);//游标移动到这里
+  context.lineTo(70, 50);//绘制直线到这里
+  context.stroke();//最后描边才能看到这些路径
+
+  // Draw some texts:
+  context.font = "14px bold Arial";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText("Alex", 100, 50);
+  //context.strokeText();
+}
+
+
+
+// 原型链的一个需要注意的问题：
+function SuperType() {
+  this.friends = [ "Amy", "Tony", "Kathy" ];
+};
+
+function SubType() {
+  // SuperType.call(this);
+  // this.friends = ["Jim", "Nina"];
+};
+SubType.prototype = new SuperType(); // 通过原型链继承，相当于SubType的prototype里有一个friends属性，所以这个friends属性必然被SubType的所有实例所共享，因此instance1修改friends后，其余的实例都会获取修改后的friends属性。（换句话说，friends属性是SubType原型上的属性）
+// console.log( "0: ", SubType.prototype.friends );
+
+var instance1 = new SubType();
+instance1.friends.push( "Jake" );
+
+var instance2 = new SubType();
+// instance2.friends.push( "Gert" );
+
+var instance3 = new SuperType();
+instance3.friends.push("Alex");
+
+var instance4 = new SuperType();
+//console.log( "1: ", instance1.friends );
+//console.log( "2: ", instance2.friends );
+//console.log( "3: ", instance3.friends );
+//console.log( "4: ", instance4.friends );
+// 对于SuperType的实例来说，friends没有在prototype里，因此instance3修改自己的friends不会影响到instance4的friends
+
+
+
+function log() {
+  var len = arguments.length;
+  for(var i = 0; i < len; i++){
+    console.log( "Log "+i, arguments[i] );
+  }
+};
+</script>
+</body>
+</html>
