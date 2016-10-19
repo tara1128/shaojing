@@ -1,6 +1,9 @@
 .DS_STORE
 node_modules
 express/node_modules
+q-cloud-website/node_modules
+q-cloud-website/build
+q-cloud-website/dist
 build
 dest
 dist

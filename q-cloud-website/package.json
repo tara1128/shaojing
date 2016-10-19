@@ -1,0 +1,27 @@
+{
+  "name": "my-blog",
+  "version": "1.0.0",
+  "description": "A tiny blog supported by node, koa, react, webpack, etc.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "koa",
+    "react",
+    "webpack",
+    "grunt"
+  ],
+  "dependencies": {
+    "pm2": "*",
+    "koa": "^1.2.4",
+    "jade": "^1.11.0"
+  },
+  "author": "Alex Wang",
+  "license": "ISC",
+  "devDependencies": {
+    "pug": "^2.0.0-beta6",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
