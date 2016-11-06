@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Touch Event</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
+<meta name="description" content="This is my own blog to record life and growth.">
+<link rel="shortcut icon" href="../../public/images/favicon.ico" type="image/x-icon" />
+<!-- link type="text/css" href="build/css/combo.css" rel="stylesheet" -->
+<script src="../../public/lib/jquery-1.9.1.min.js"></script>
+<style>
+html, body {height:100%;}
+.box, .btn-wrapper {margin:100px auto 0;padding:10px;width:80%;border:2px solid #ccc;color:#777;clear:both;min-height:45px;}
+.btn{display:block;float:left;margin:10px 10px 0 0;width:40%;height:30px;border:1px solid #ddd;text-align:center;line-height:32px;font-size:14px;color:#666;}
+</style>
+</head>
+<body>
+  <div class="wrapper" id="Wrapper">
+    <div class="box" id="Box">
+      <p id="Fir">Today we are learning Touch Event.</p>
+      <p id="Sec">Touch event is commonly used for mobile devices.</p>
+    </div>
+    <div class="btn-wrapper">
+      <a class="btn left" id="BtnL">Left Button</a>
+      <a class="btn right" id="BtnR">Right Button</a>
+    </div>
+  </div><!-- wrapper -->
+<script>
+var wrap = document.getElementById("Wrapper");
+var box  = document.getElementById("Box");
+var btnL = document.getElementById("BtnL");
+var btnR = document.getElementById("BtnR");
+start();
+
+function start() {
+  var el = document.getElementsByTagName('body')[0];
+  el.addEventListener('touchend', handleTouchEnd, false);
+  el.addEventListener('touchcancel', handleTouchCancel, false);
+  el.addEventListener('touchmove', handleTouchMove, false);
+  el.addEventListener('touchstart', handleTouchStart, false);
+  el.addEventListener('click', handleClick, false);
+  log('Get ready.');
+};
+
+function handleTouchStart(e) {
+  console.log('touch start', e);
+  box.innerHTML += ' touchStart. ';
+};
+
+function handleTouchMove(e) {
+  console.log('touch move', e);
+  box.innerHTML += ' touchMove. ';
+};
+
+function handleTouchEnd(e) {
+  console.log('touch end', e);
+  box.innerHTML += ' touchEnd. ';
+};
+
+function handleTouchCancel(e) {
+  console.log('touch cancel', e);
+  box.innerHTML += ' touchCancel. ';
+};
+
+function handleClick(e) {
+  console.log('click', e);
+  box.innerHTML += ' Click. ';
+};
+
+
+
+
+function log() {
+  var len = arguments.length;
+  for(var i = 0; i < len; i++){
+    console.log( "Log "+i, arguments[i] );
+  }
+};
+</script>
+</body>
+</html>

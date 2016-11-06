@@ -21,6 +21,8 @@
   "author": "Alex Wang",
   "license": "ISC",
   "devDependencies": {
+    "co-mysql": "^1.0.0",
+    "koa-router": "^5.4.0",
     "pug": "^2.0.0-beta6",
     "pug-cli": "^1.0.0-alpha6"
   }

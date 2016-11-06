@@ -1,0 +1,275 @@
+/*
+  cart.css by Alex
+  Latest modified: 2016-11-06 19:37
+*/
+html,body {
+  width:1920px; /* Fit the width of the machine */
+}
+.wrapper {
+  position:relative;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.4);
+  color:#7d3e39;
+  /* 这里的 wrapper 仅用来模拟弹窗下面的页面 */
+}
+
+.cart-wrapper {
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  box-sizing:border-box;
+  background:#fff;
+}
+
+/* 第一行的样式 */
+.cart-item-list {
+  padding:45px 21px 0;
+  background:#f2f2f2;
+  border-bottom:1px solid #d9d9d9;
+}
+.cart-item {
+  float:left;
+  margin:0 9px 18px 9px;
+  padding:20px 40px;
+  width:194px;
+  height:414px;
+  border:1px solid #d9d9d9;
+  border-radius:4px;
+  background:#fff;
+}
+
+.item-pic {
+  margin:0 auto;
+  width:100%;
+  max-height:200px;
+  overflow:hidden;
+}
+.item-pic img {
+  display:block;
+  margin:0 auto;
+  width:100%;
+}
+
+.item-name {
+  margin:10px 0 20px;
+}
+.item-name span {
+  display:block;
+  font-size:23px;
+  line-height:26px;
+  color:#343434;
+}
+
+.item-price {
+  margin-bottom:45px;
+  overflow:hidden;
+}
+.final-price {
+  display:block;
+  float:left;
+  margin-right:5px;
+  font-size:28px;
+  color:#28abef;
+}
+.market-price {
+  display:block;
+  float:left;
+  margin-top:8px;
+  font-size:16px;
+  color:#a3a3a3;
+  text-decoration:line-through;
+}
+
+.item-panel {
+  overflow:hidden;
+}
+.counting {
+  float:left;
+}
+.btn-minus, .btn-plus {
+  display:block;
+  float:left;
+  width:40px;
+  height:48px;
+  border:1px solid #dedede;
+  text-indent:-9999px;
+  cursor:pointer;
+}
+.btn-minus {
+  background:url(images/icon-minus.png) 50% 50% no-repeat #f0f0f0;
+  border-radius:50px 0 0 50px;
+}
+.btn-plus {
+  background:url(images/icon-plus.png) 50% 50% no-repeat #f0f0f0;
+  border-radius:0 50px 50px 0;
+}
+.quantity {
+  display:block;
+  float:left;
+  padding:0 4px;
+  width:40px;
+  height:48px;
+  font-size:18px;
+  line-height:48px;
+  color:#343434;
+  border-top:1px solid #dedede;
+  border-bottom:1px solid #dedede;
+  border-left:none;
+  border-right:none;
+  background:#fff;
+}
+.trash {
+  display:block;
+  float:right;
+  width:50px;
+  height:50px;
+  background:url(images/icon-trash.png) 50% 50% no-repeat;
+  text-indent:-9999px;
+  cursor:pointer;
+}
+
+
+/* 第二行的样式 */
+.cart-other-content {
+  padding:0 0 27px 21px;
+}
+.cart-friends-choice {
+  float:left;
+}
+.cart-frd-title {
+  margin:38px 0 38px 20px;
+  font-size:32px;
+  color:#343434;
+  font-weight:normal;
+}
+
+.cart-item.friend-item {
+  position:relative;
+  height:310px;
+}
+.item-add-to-cart {
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:62px;
+  height:62px;
+  background:url(images/icon-add.png) no-repeat;
+  text-indent:-9999px;
+  cursor:pointer;
+}
+
+.cart-my-total, .cart-weixin-pay {
+  min-height:440px;
+}
+.cart-my-total {
+  float:left;
+  position:relative;
+  margin-left:21px;
+  padding-top:38px;
+  width:560px;
+  border-left:1px solid #d9d9d9;
+  border-right:1px solid #d9d9d9;
+}
+.my-total-box {
+  position:absolute;
+  left:0;
+  top:50%;
+  margin-top:-130px;/* 为多行金额的整体垂直居中，动态调整这个值 */
+  width:100%;
+}
+.price-one-line {
+  margin:10px auto;
+  width:80%;
+  overflow:hidden;
+}
+.price-name {
+  float:left;
+  margin-top:5px;
+  font-size:30px;
+  color:#343434;
+}
+.price-num {
+  float:right;
+  font-size:36px;
+  color:#28abef;
+}
+.price-one-line.should-pay {
+  margin-top:34px;
+  padding-top:30px;
+  border-top:1px solid #d9d9d9;
+}
+.price-num.total-pay {
+  font-size:48px;
+}
+.price-one-line.should-pay .price-name {
+  margin-top:15px;
+}
+
+.cart-weixin-pay {
+  float:right;
+  width:412px;
+  padding-top:80px;
+}
+.wx-pic {
+  margin:0 auto;
+  display:block;
+}
+
+/* 右上角的区域 */
+.cart-close {
+  position:absolute;
+  right:40px;
+  top:-35px;
+  width:70px;
+  height:70px;
+  border-radius:70px;
+  background:url(images/icon-close.png) 50% 50% no-repeat #fff;
+  box-shadow:-5px 5px 30px 2px rgba(0,0,0,.3);
+  text-indent:-9999px;
+  cursor:pointer;
+}
+.cart-total-tag {
+  position:absolute;
+  right:140px;
+  top:-35px;
+  width:220px;
+  height:70px;
+  background:#fa7c73;
+  box-shadow:-5px 5px 30px 2px rgba(0,0,0,.3);
+  border-radius:70px 70px 0 70px;
+}
+.items-num {
+  position:absolute;
+  left:20px;
+  top:10px;
+  width:50px;
+  height:50px;
+  background:url(images/icon-bag.png) left top no-repeat;
+}
+.num {
+  position:absolute;
+  right:-7px;
+  top:-2px;
+  padding:0 4px;
+  min-width:20px;
+  height:28px;
+  line-height:28px;
+  border-radius:20px;
+  font-size:14px;
+  text-align:center;
+  background:#fff;
+  color:#fa7c73;
+  border:3px solid #fa7c73;
+}
+.current-price {
+  position:absolute;
+  left:90px;
+  top:20px;
+  font-size:18px;
+  color:#fff;
+}
+.current-price em {
+  font-size:36px;
+}
