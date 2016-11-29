@@ -1,35 +1,26 @@
 /*
-  The core of the app.
-  Should be synchronous with files on cloud.
-  Author: Alex Wang.
-  Latest modified: 2016-10-20 11:14
+  app.js
 */
 
 var koa = require('koa');
-var app = koa();
+var app = new koa();
 var Router = require('koa-router');
 var router = Router();
-var port = 8081;
+var port = 3000;
 
-var wrapper = require('co-mysql');
-var mysql = require('mysql');
-var co = require('co');
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
+// var App = React.createFactory(require('./components/app'));
+var App = require('./components/app');
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
 router.get('/', function *(){
-  this.body = '123';
+  var markUp = ReactDOMServer.renderToString( App() );
+  this.body = markUp;
 });
 
-router.get('/user/:id', function *(){
-  this.body = 'User is ' + this.params.id;  
+app.listen(port, function(){
+  console.log('App.js is running, listening 3000');  
 });
-
-console.log( wrapper );
-//console.log( mysql );
-//console.log( co );
-
-
-
-app.listen(port);

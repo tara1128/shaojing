@@ -6,9 +6,6 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="keywords" content="web,mobile,html,HTML5,css,CSS3,javascript,node,application,IOS,Android">
 <meta name="description" content="This is my own blog to record life and growth.">
-<link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon" />
-<link type="text/css" href="build/css/combo.css" rel="stylesheet">
-<script src="public/jquery-1.9.1.min.js"></script>
 </head>
 <body>
   <div class="wrapper" id="Wrapper">
@@ -53,6 +50,28 @@ Array.prototype.BubbleSort = function() {
   }
   return this;
 };
+
+// Another Bubble Sort from Outside:
+function bubbleSort( myArray ) {
+  var num = myArray.length;
+  var temp;
+  for (var outer = num; outer >= 2; outer--) {
+    for (var inner = 0; inner <= outer - 1; inner++) {
+      console.log( 'outer ===', outer, ', inner ===', inner );
+      if(myArray[inner] > myArray[inner+1]) {
+        temp = myArray[inner];
+        myArray[inner] = myArray[inner + 1];
+        myArray[inner + 1] = temp;
+      }
+    }
+  }
+  console.log(myArray);
+  return myArray;
+}
+/*
+var arr = [10, 78, 100, 99, 56, 12, 33];
+bubbleSort(arr);
+*/
 
 // Merge Sort:
 Array.prototype.MergeSort = function() {
