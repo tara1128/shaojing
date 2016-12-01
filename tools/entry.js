@@ -23,9 +23,10 @@
 /* 测试字符串中出现最多次数的字符 */
 (function(){
   let theMaxDuplicateChar = require('./findMaxDuplicateChar');
-  let myString = 'Hello World!';
+  // let myString = 'Hello World!';
+  let myString = 'abcdefgd';
   let theMaxDupChar = theMaxDuplicateChar( myString );
-  console.log( theMaxDupChar );
+  console.log( 'Find the most display char: ', theMaxDupChar );
 }());
 
 /* 测试冒泡排序 */
@@ -47,4 +48,13 @@
   let randomString = require('./randomString');
   let n = 6;
   console.log( 'Random string: ', randomString(n) );
-}())
+}());
+
+/* 测试在无序数组中查找最值 */
+(function(){
+  let theMin = require('./theMinAndTheMax').min;  
+  let theMax = require('./theMinAndTheMax').max;  
+  let array = [90, 67, 12, 100, 56, 0, 12, -18, -48, 90, 207, 98];
+  console.log('Find the min ', theMin(array));
+  console.log('Find the max ', theMax(array));
+}());
