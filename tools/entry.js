@@ -86,4 +86,27 @@
   console.log( 'BinSearch, searching', data, ': ', myArray, binSearch(myArray, data) );
 }());
 
-
+/* 测试一个安全的类型检测器 */
+(function(){
+  let typeDetector = require('./typeDetector');
+  let testData = {
+    str: 'I am a string',
+    boo: true,
+    num: 138,
+    obj: {name: 'Alex', age: 33},
+    arr: [10, 20, 30],
+    und: undefined,
+    nul: null,
+    reg: /\.jsx?$/,
+    fun: function () { console.log('Hey') },
+    jsn: {"code": 1, "data": [1,3,5,7,9], "type": "Json"},
+    cst: function Person(name, city) {
+      this.name = name;
+      this.city = city;
+    } /* Constructors defined by developers would returned [object Object] in this detector? */
+  };
+  /* Now let's detect all them above! */
+  for ( var K in testData ) {
+    console.log( K, '======>', typeDetector( testData[K] ) );
+  }
+}());
