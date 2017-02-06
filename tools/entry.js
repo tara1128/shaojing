@@ -83,7 +83,7 @@
   let binSearch = require('./modules/binSearch');  
   let myArray = [1,3,5,6,7,8,9,10,11,12,23,34,45,56,67,78,89,90];
   let data = 78;
-  console.log( 'BinSearch, searching', data, ': ', myArray, binSearch(myArray, data) );
+  // console.log( 'BinSearch, searching', data, ': ', myArray, binSearch(myArray, data) );
 }());
 
 /* 测试一个安全的类型检测器 */
@@ -107,6 +107,19 @@
   };
   /* Now let's detect all them above! */
   for ( var K in testData ) {
-    console.log( K, '======>', typeDetector( testData[K] ) );
+    // console.log( K, '======>', typeDetector( testData[K] ) );
   }
 }());
+
+let funcs = [ function a(){}, function b(){}, 'c', 'd' ];
+
+funcs = funcs.filter(func => typeof func === 'function');
+
+console.log('After filter: ', funcs);
+
+
+
+
+
+
+
